@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "MyArchmaticsSchema",
+  "title": "My Archmatic Schematics Schema",
+  "type": "object",
+  "properties": {
+   "analytics":{
+     "default":"none",
+     "enum": [
+      "GoogleAnalytics",
+      "AppDynamics"
+     ],
+     "x-prompt":"Which Analytics would you like to use?"
+   },
+   "trackingId":{
+     "x-prompt":"Please enter tracking Id : UA-",
+     "type":"string"
+   }
+  }
+}

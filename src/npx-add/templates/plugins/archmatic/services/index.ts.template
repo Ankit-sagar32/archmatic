@@ -1,0 +1,20 @@
+
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthHttpInterceptor } from './auth/interceptor/auth-interceptor';
+import { LoggingInterceptor } from './logging/interceptor/logging-interceptor';
+import { CachingInterceptor } from './caching/interceptor/caching-interceptor';
+import { AuthHttpService } from './auth/auth-http.service';
+import { CacheMapService } from './caching/cache-map.service';
+
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
+];
+
+export {
+  AuthHttpService,
+  CacheMapService
+}
+

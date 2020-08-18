@@ -1,0 +1,22 @@
+import { NgModule } from '@angular/core';
+import {
+    httpInterceptorProviders,
+    AuthHttpService,
+    CacheMapService
+} from './services';
+
+import {
+    GlobalErrorHandler
+} from './handlers';
+
+@NgModule({
+    declarations: [],
+    imports: [],
+    providers: [
+        GlobalErrorHandler,
+        AuthHttpService,
+        CacheMapService,
+        httpInterceptorProviders
+    ]
+})
+export class ArchmaticModule { }

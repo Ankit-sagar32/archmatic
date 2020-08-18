@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "MyFullSchematicsSchema",
+  "title": "My Full Schematics Schema",
+  "type": "object",
+  "properties": {
+    "index": {
+      "type": "number",
+      "default": 1
+    },
+    "authType": {
+      "enum": [
+        "OKTA",
+        "IAM",
+        "ALL"
+      ],
+      "type": "string",
+      "x-prompt": "Which IDP would you like to use?",
+      "dependencies": {
+        "@oktadev/schematics": true
+      }
+    }
+  }
+}

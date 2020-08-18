@@ -1,0 +1,27 @@
+import { Injectable } from '@angular/core';
+import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+
+import { AuthHttpService } from '../auth-http.service';
+
+@Injectable()
+export class AuthHttpInterceptor implements HttpInterceptor {
+  constructor(private authHttpSvc: AuthHttpService) { }
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    // TODO : Add authHttpSvc handle logic ( Tokens etc.)
+
+    return next.handle(request).pipe(
+      tap(evt => {
+        if (evt instanceof HttpResponse) {
+          // TODO : Log HERE
+        }
+      }),
+      catchError(err => {
+        return throwError(err);
+      })
+    );
+  }
+}

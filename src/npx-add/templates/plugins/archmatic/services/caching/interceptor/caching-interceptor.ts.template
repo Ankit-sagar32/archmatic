@@ -1,0 +1,33 @@
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpRequest, HttpResponse, HttpHandler, HttpEvent } from '@angular/common/http';
+import { of, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { CacheMapService } from '../cache-map.service';
+
+// TODO : Configure Cachable url / collection
+// const CACHABLE_URL = "";
+
+@Injectable()
+export class CachingInterceptor implements HttpInterceptor {
+  constructor(private cache: CacheMapService) { }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (!this.isRequestCacheable(req)) {
+      return next.handle(req);
+    }
+    const cachedResponse = this.cache.get(req);
+    if (cachedResponse !== null) {
+      return of(cachedResponse);
+    }
+    return next.handle(req).pipe(
+      tap(event => {
+        if (event instanceof HttpResponse) {
+          this.cache.put(req, event);
+        }
+      })
+    );
+  }
+  private isRequestCacheable(req: HttpRequest<any>): boolean {
+    return (req.method === 'GET'); // && (req.url.indexOf(CACHABLE_URL) > -1);
+  }
+}
