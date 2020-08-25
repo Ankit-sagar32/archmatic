@@ -9,7 +9,6 @@ export function analyticsFactory(analytics: any, tree: Tree, options: any): Tree
             const content: Buffer | null = tree.read("src/index.html");
             let strContent: string = '';
             if (content) strContent = content.toString();
-            console.log('total:' + content?.length);
             const appendIndex = strContent.indexOf('</body>');
             const content2Append = `
     <!--************ Google Analytics Starts **************-->

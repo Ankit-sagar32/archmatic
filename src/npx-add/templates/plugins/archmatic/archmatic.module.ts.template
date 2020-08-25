@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import {
     httpInterceptorProviders,
     AuthHttpService,
@@ -11,8 +12,11 @@ import {
 
 @NgModule({
     declarations: [],
-    imports: [
-        LoggerModule.forRoot({serverLoggingUrl: '<%= serverLoggingUrl %>', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR})
+     imports: [
+        LoggerModule.forRoot({
+            serverLoggingUrl: 'https://logs-01.loggly.com/inputs/90e65d2b-0ebb-4e26-9952-9d7f7612605a/tag/http/',
+            level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR
+        })
     ],
     providers: [
         GlobalErrorHandler,

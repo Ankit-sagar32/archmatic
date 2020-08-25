@@ -16,9 +16,7 @@
       ],
       "type": "string",
       "x-prompt": "Which IDP would you like to use?",
-      "dependencies": {
-        "@oktadev/schematics": true
-      }
+      "dependencies": {}
     }
   }
 }

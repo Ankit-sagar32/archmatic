@@ -41,7 +41,7 @@ export function getProjectPath(tree: Tree, options: any) {
 
 export function setupOptions(host: Tree, options: any): Tree {
   const projectPath = getProjectPath(host, options);
-  console.log("Project Path: " + projectPath);
+  // console.log("Project Path: " + projectPath);
   options.path = join(normalize(projectPath), 'src');
   return host;
 }

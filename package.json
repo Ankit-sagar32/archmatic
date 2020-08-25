@@ -6,7 +6,7 @@
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js",
     "copy:templates": "cd src/ && cp --parents -p -r **/templates/** ../dist/archmatic/",
-    "dev:build": "npm run build && npm run copy:templates && schematics .:npx-add"
+    "build:dev": "npm run build && npm run copy:templates && schematics .:npx-add"
   },
   "keywords": [
     "schematics",

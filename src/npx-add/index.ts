@@ -52,7 +52,6 @@ export default function (options: any): Rule {
     schematic('npx-add-analytics', { ...options }),    
     (_tree: Tree, context: SchematicContext) => {
       setupOptions(_tree, options);
-      console.log('Inside Templates');
       const movePath = normalize(options.path + '/app');
       const { serverLoggingUrl } = options;
       const templateSource = apply(url('./templates'), [
@@ -67,6 +66,7 @@ export default function (options: any): Rule {
       ]);
 
       const rule = mergeWith(templateSource, MergeStrategy.Overwrite);
+      
       addModuleDependencies(_tree, options);
       return rule(_tree, context);
     },
