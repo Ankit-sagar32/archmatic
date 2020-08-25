@@ -11,8 +11,20 @@
     "isNewProject": {
       "type": "boolean"
     },
-    "name":{
-      "type":"string"
+    "name": {
+      "type": "string"
+    },
+    "logging": {
+      "enum": [
+        "Splunk",
+        "Loggly",
+        "LogDNA"
+      ],
+      "x-prompt": "Please select Logging Service"
+    },
+    "serverLoggingUrl":{
+      "type":"string",
+      "x-prompt":"Please enter server Logging url:"
     }
   }
 }

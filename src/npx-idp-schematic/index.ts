@@ -2,7 +2,7 @@ import {
   Rule,
   SchematicContext,
   Tree, chain,
-  externalSchematic,
+  // externalSchematic,
   noop,
 } from '@angular-devkit/schematics';
 
@@ -33,10 +33,8 @@ export function idpSchematic(options: any): Rule {
     (tree: Tree, context: SchematicContext) => {
       // Not required : Since okta external schematic already installs package
       // context.addTask(new NodePackageInstallTask());
-      context.logger.info('');
+      context.logger.info('Installing');
       return tree;
-    },
-    options.authType == 'OKTA' ? externalSchematic('@oktadev/schematics', 'add-auth', options) : noop()
-
+    }
   ]);
 }

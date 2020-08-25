@@ -1,0 +1,9 @@
+import { Injectable } from '@angular/core';
+import { HttpRequest, HttpResponse } from '@angular/common/http';
+
+@Injectable()
+export class LoggingService  {
+  
+  constructor() {}
+ 
+}

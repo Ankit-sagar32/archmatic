@@ -11,7 +11,9 @@ import {
 
 @NgModule({
     declarations: [],
-    imports: [],
+    imports: [
+        LoggerModule.forRoot({serverLoggingUrl: '<%= serverLoggingUrl %>', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR})
+    ],
     providers: [
         GlobalErrorHandler,
         AuthHttpService,
